@@ -2,3 +2,10 @@ footer {
   display: grid;
   grid-template-rows: 2fr 1fr 1fr 1fr; 
   gap: 20px; 
+}
+
+.footer-column {
+  display: grid;
+  grid-template-rows: 1fr;
+  gap: 10px;
+}
