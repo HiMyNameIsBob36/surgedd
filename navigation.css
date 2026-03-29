@@ -1,9 +1,10 @@
 body {
-  background: #3c9600;
+  background: black:
+  color: white;
 }
 
 site-footer {
-  background: black;
+  border: solid 1px black;
   display: grid;
   grid-template-rows: 2fr 1fr 1fr 1fr; 
   gap: 20px; 
