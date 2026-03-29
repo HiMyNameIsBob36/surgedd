@@ -247,13 +247,8 @@ body {
 @media (max-width: 700px) {
 
   /* NAV */
-  .nav-links a {
+ .nav-icon span {
   display: none;
-}
-  
-  .nav-links img {
-  display: block;
-}
   
   .logo span {
     display: none;
