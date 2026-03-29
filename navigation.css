@@ -53,7 +53,8 @@ body {
 }
 
 .logo span {
- color: var(--primary)
+  color: var(--primary);
+  font-weight: 800;
 }
 
 .logo-box {
