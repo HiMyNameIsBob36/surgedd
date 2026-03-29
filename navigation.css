@@ -53,7 +53,6 @@ body {
 }
 
 /* LOGO */
-/* LOGO FIX */
 .logo,
 .logo a {
   display: flex;
@@ -120,6 +119,10 @@ body {
 .nav-links a:hover::after {
   width: 70%;
 }
+
+.nav-links:nth-child(1):hover img { content: url("../media/support-a.svg"); }
+.nav-linkx:nth-child(2):hover img { content: url("../media/marketplace-a.svg"); }
+.nav-links:nth-child(3):hover img { content: url("../media/start-a.svg"); }
 
 /* ========================= */
 /* CTA BUTTON */
@@ -202,6 +205,10 @@ body {
   color: var(--text);
 }
 
+.footer-col:nth-child(1):hover img { content: url("../media/mail-a.svg"); }
+.footer-col:nth-child(2):hover img { content: url("../media/chat-a.svg"); }
+.footer-col:nth-child(3):hover img { content: url("../media/github-a.svg"); }
+
 /* BRAND SECTION */
 .brand {
   max-width: 320px;
@@ -253,6 +260,7 @@ body {
   
 .nav-links span {
   display: none;
+}
   
 .logo span {
   display: none;
