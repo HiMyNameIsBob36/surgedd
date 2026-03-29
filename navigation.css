@@ -76,10 +76,13 @@ body {
   text-decoration: none;
   color: var(--muted);
   font-size: 14px;
+  padding: 10px 18px;
+  transition: color 0.5s, border 0.5s;
 }
 
 .nav-links a:hover {
   border: solid 1px var(--primary);
+  color: var(--primary);
 }
 
 /* CTA BUTTON */
