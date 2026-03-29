@@ -249,6 +249,10 @@ body {
     content: "";
   }
 
+  .nav span {
+    display: none;
+  }
+
   /* FOOTER */
   .footer-inner {
     flex-direction: column;
