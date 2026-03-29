@@ -83,7 +83,8 @@ body {
 
 .nav-links a {
   display: inline-flex;
-  align-items: center;   /* THIS aligns text vertically */
+  gap: 6px;
+  align-items: center; 
   justify-content: center;
   line-height: 1;
   position: relative;
