@@ -71,13 +71,15 @@ body {
 }
 
 .nav-links a {
+  border: solid 1px var(--muted);
+  border-radius: 10px;
   text-decoration: none;
   color: var(--muted);
   font-size: 14px;
 }
 
 .nav-links a:hover {
-  color: var(--text);
+  border: solid 1px var(--primary);
 }
 
 /* CTA BUTTON */
