@@ -71,18 +71,18 @@ body {
 }
 
 .nav-links a {
-  border: solid 3px var(--muted);
+  border: solid 2px var(--muted);
   border-radius: 15px;
   text-decoration: none;
   color: var(--muted);
   font-size: 14px;
   font-weight: 500;
   padding: 10px 18px;
-  transition: color 0.3s, border 0.3s;
+  transition: color 0.1s, border 0.1s;
 }
 
 .nav-links a:hover {
-  border: solid 3px var(--primary);
+  border: solid 2px var(--primary);
   color: var(--primary);
 }
 
