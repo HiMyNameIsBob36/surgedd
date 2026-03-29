@@ -28,23 +28,18 @@ class SiteFooter extends HTMLElement {
 </div>
 
 <div class="footer-column">
-<h4>MARKETPLACE</h4>
-<a href="#">Browse</a><a href="#">Groups</a><a href="#">Talent</a><a href="#">Upload</a>
+<h4>Resources</h4>
+<a href="#">Support</a><a href="#">Premium</a><a href="#">Site Status</a>
 </div>
 
 <div class="footer-column">
-<h4>ACCOUNT</h4>
-<a href="#">Profile</a><a href="#">Creator Dashboard</a><a href="#">Support</a><a href="#">Guidelines</a>
+<h4>Get in Touch</h4>
+<a href="#">Email</a><a href="#">Discord</a>
 </div>
 
 <div class="footer-column">
-<h4>COMMUNITY</h4>
-<a href="#">Blog</a><a href="#">Affiliates</a>
-</div>
-
-<div class="footer-column">
-<h4>LEGAL</h4>
-<a href="#">Terms</a><a href="#">Privacy</a>
+<h4>Legal</h4>
+<a href="#">Terms of Service</a><a href="#">Privacy Policy</a>
 </div></div>
 
 <div class="footer-bottom">
