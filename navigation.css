@@ -247,12 +247,16 @@ body {
 @media (max-width: 700px) {
 
   /* NAV */
- .nav-icon span {
+.nav-links {
+  gap: 12px;
+}
+  
+.nav-links span {
   display: none;
   
-  .logo span {
-    display: none;
-  }
+.logo span {
+  display: none;
+}
 
   /* FOOTER */
   .footer-inner {
