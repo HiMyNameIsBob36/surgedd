@@ -173,6 +173,7 @@ body {
 
 .brand h2 {
   color: var(--primary);
+  vertical-align: text-center;
 }
 
 .brand p {
