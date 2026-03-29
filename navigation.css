@@ -247,6 +247,10 @@ body {
 @media (max-width: 700px) {
 
   /* NAV */
+  .nav-links a:not(.cta):not(.login) {
+  display: none;
+}
+  
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;
