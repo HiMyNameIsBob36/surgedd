@@ -120,9 +120,9 @@ body {
   width: 70%;
 }
 
-.nav-links:nth-child(1):hover img { content: url("../media/support-a.svg"); }
-.nav-linkx:nth-child(2):hover img { content: url("../media/marketplace-a.svg"); }
-.nav-links:nth-child(3):hover img { content: url("../media/start-a.svg"); }
+.nav-links a:nth-child(1):hover img { content: url("../media/support-a.svg"); }
+.nav-links a:nth-child(2):hover img { content: url("../media/marketplace-a.svg"); }
+.nav-links a:nth-child(3):hover img { content: url("../media/start-a.svg"); }
 
 /* ========================= */
 /* CTA BUTTON */
@@ -205,9 +205,9 @@ body {
   color: var(--text);
 }
 
-.footer-col:nth-child(1):hover img { content: url("../media/mail-a.svg"); }
-.footer-col:nth-child(2):hover img { content: url("../media/chat-a.svg"); }
-.footer-col:nth-child(3):hover img { content: url("../media/github-a.svg"); }
+.footer-col a:nth-child(1):hover img { content: url("../media/mail-a.svg"); }
+.footer-col a:nth-child(2):hover img { content: url("../media/chat-a.svg"); }
+.footer-col a:nth-child(3):hover img { content: url("../media/github-a.svg"); }
 
 /* BRAND SECTION */
 .brand {
