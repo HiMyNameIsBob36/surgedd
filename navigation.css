@@ -245,12 +245,8 @@ body {
 @media (max-width: 700px) {
 
   /* NAV */
-  .nav-links a:not(.cta):not(.login) {
-    display: none;
-  }
-
-  .logo span {
-    display: none;
+  .nav-links a {
+    content: "";
   }
 
   /* FOOTER */
@@ -261,7 +257,6 @@ body {
     gap: 25px;
   }
 
-  /* adapts automatically (2 or 3 columns depending on what exists) */
   .footer-group {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
