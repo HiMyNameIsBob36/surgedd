@@ -205,9 +205,9 @@ body {
   color: var(--text);
 }
 
-.footer-col a:nth-child(1):hover img { content: url("../media/mail-a.svg"); }
-.footer-col a:nth-child(2):hover img { content: url("../media/chat-a.svg"); }
-.footer-col a:nth-child(3):hover img { content: url("../media/github-a.svg"); }
+.footer-col a:nth-child(2):hover img { content: url("../media/mail-a.svg"); }
+.footer-col a:nth-child(3):hover img { content: url("../media/chat-a.svg"); }
+.footer-col a:nth-child(4):hover img { content: url("../media/github-a.svg"); }
 
 /* BRAND SECTION */
 .brand {
