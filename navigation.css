@@ -52,6 +52,11 @@ body {
   gap: 10px;
 }
 
+.logo img {
+  width: 32px;
+  height: 32px;
+}
+
 .logo span {
   color: var(--primary);
   font-weight: 800;
