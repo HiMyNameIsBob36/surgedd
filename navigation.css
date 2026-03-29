@@ -146,6 +146,9 @@ body {
   display: flex;
   gap: 60px;
 }
+.brand {
+  color: --var(primary)
+}
 
 .footer-col h4 {
   margin-bottom: 12px;
