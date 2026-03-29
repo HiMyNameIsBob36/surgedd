@@ -247,8 +247,6 @@ body {
 @media (max-width: 700px) {
 
   /* NAV */
-  @media (max-width: 700px) {
-
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;
