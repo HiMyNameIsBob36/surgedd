@@ -53,6 +53,7 @@ body {
 }
 
 /* LOGO */
+/* LOGO FIX */
 .logo,
 .logo a {
   display: flex;
@@ -62,14 +63,15 @@ body {
   text-decoration: none;
   color: var(--primary);
   font-weight: 800;
+  line-height: 1; /* prevents weird vertical offset */
 }
 
 .logo img {
-  width: 20px;
-  height: 20px;
+  width: 28px;   /* bigger + consistent */
+  height: 28px;
   object-fit: contain;
+  display: block; /* removes inline spacing issues */
 }
-
 /* ========================= */
 /* NAV LINKS */
 /* ========================= */
@@ -251,27 +253,41 @@ body {
     display: none;
   }
 
-  /* FOOTER LAYOUT */
+  /* FOOTER */
   .footer-inner {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 25px;
   }
 
+  /* adapts automatically (2 or 3 columns depending on what exists) */
   .footer-group {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .footer-col h4 {
     font-size: 13px;
+    margin-bottom: 6px;
   }
 
   .footer-col a {
     font-size: 12px;
+    justify-content: center;
   }
 
   .brand {
-    max-width: 100%;
+    align-items: center;
+    text-align: center;
   }
 }
