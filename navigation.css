@@ -1,7 +1,20 @@
+body {
+  background: #3c9600;
+}
+
 site-footer {
+  background: black;
   display: grid;
   grid-template-rows: 2fr 1fr 1fr 1fr; 
   gap: 20px; 
+}
+
+.footer-brand {
+
+}
+
+.footer-brand span {
+  color: grey;
 }
 
 .footer-column {
