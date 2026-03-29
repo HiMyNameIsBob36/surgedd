@@ -20,10 +20,11 @@ class SiteHeader extends HTMLElement {
 class SiteFootee extends HTMLElement {
   connectedCallback() {
       this.innerHTML = `
-<footer class="footer"><div class="footer-grid">
+<footer><div class="footer-grid">
 
 <div class="footer-brand">
-<h2>ERLC<span>X</span></h2><p>Discover and share high-quality ER:LC assets built by the community.</p>
+<h2>Surgedd</h2><p>Surge your servers staff team in no time.</p>
+<span>© 2026 Surgedd. All rights reserved.<br>This site is not endorsed nor affilated with Roblox Inc.</span>
 </div>
 
 <div class="footer-column">
