@@ -17,7 +17,7 @@ class SiteHeader extends HTMLElement {
 }
 
 
-class SiteFootee extends HTMLElement {
+class SiteFooter extends HTMLElement {
   connectedCallback() {
       this.innerHTML = `
 <footer><div class="footer-grid">
