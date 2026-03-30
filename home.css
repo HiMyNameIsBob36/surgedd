@@ -12,10 +12,6 @@ section h1 {
   border: 2px dotted white;
 }
 
-article {
-  border: 2px dotted white;
-}
-
 .card {
   border: 1px solid var(--muted);
   border-radius: 15px;
@@ -31,7 +27,8 @@ article {
   border-radius: 999px;
   font-weight: 500;
   color: #fff !important;
-
+  width: 100px;
+  
   background: linear-gradient(
     120deg,
     var(--primary),
