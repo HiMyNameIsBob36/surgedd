@@ -4,6 +4,10 @@ section {
   border: 2px dotted white;
 }
 
+section div {
+  display: inline;
+}
+
 .main {
   width: 75%;
 }
