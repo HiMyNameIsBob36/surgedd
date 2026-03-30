@@ -1,7 +1,8 @@
 section {
-  text-align: center;
+  text-align: left;
   padding-top: 150px;
   border: 2px dotted white;
+  width: 75%;
 }
 
 section h1 {
@@ -15,6 +16,10 @@ article {
   border: 2px dotted white;
 }
 
+.card {
+  border: 1px solid var(--muted);
+  border-radius: 15px;
+}
 
 
 /* ========================= */
@@ -53,13 +58,16 @@ article {
 
 
 
-
+main {
+  border: 2px dotted white;
+}
 
 @keyframes bounce {
   0% { transform: ; }
   50% { transform: ; }
 }
 
-main {
-  border: 2px dotted white;
+@media (max-width: 700px) {
+  .card { display: none; }
+  section{ width: 100%; }
 }
