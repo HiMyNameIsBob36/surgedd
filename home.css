@@ -1,11 +1,26 @@
-* {
-  border: 1px solid black;
+section {
+  border: 2px dotted white;
 }
 
-section {
-  
+.scroll {
+  border: 2px dotted white;
+}
+
+nav {
+  border: 2px dotted white;
+}
+
+
+
+
+
+
+
+@keyframes bounce {
+  0% { }
+  50% { }
 }
 
 main {
-
+  border: 2px dotted white;
 }
