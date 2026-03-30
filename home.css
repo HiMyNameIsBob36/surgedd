@@ -2,7 +2,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  positon: fixed;
+  positon: absolute;
   top: 50px;
   border: 2px dotted white;
 }
@@ -11,19 +11,16 @@ section {
   border: 2px dotted white;
 }
 
-nav {
+article {
   border: 2px dotted white;
 }
 
 
 
 
-
-
-
 @keyframes bounce {
-  0% { }
-  50% { }
+  0% { transform: ; }
+  50% { transform: ; }
 }
 
 main {
