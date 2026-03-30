@@ -4,6 +4,9 @@ section {
   border: 2px dotted white;
 }
 
+section h1 {
+  color: var(--primary)
+}
 .scroll {
   border: 2px dotted white;
 }
