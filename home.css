@@ -1,8 +1,5 @@
 section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   padding-top: 150px;
   border: 2px dotted white;
 }
