@@ -1,4 +1,9 @@
 section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  positon: fixed;
+  top: 50px;
   border: 2px dotted white;
 }
 
