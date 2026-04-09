@@ -120,7 +120,7 @@ header {
 
 .nav-links a:nth-child(1):hover img { content: url("../media/support-a.svg"); }
 .nav-links a:nth-child(2):hover img { content: url("../media/marketplace-a.svg"); }
-.nav-links a:nth-child(3):hover img { content: url("../media/start-a.svg"); }
+.nav-links a:nth-child(3):hover img { content: url("../media/account-a.svg"); }
 
 /* ========================= */
 /* FOOTER */
