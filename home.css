@@ -10,14 +10,14 @@ section div { display: inline; }
 
 section h1 { 
   color: var(--primary);
-  font-size: 26px; /* adjusted */
+  font-size: 30px; /* adjusted */
 }
 
 .scroll { border: 2px dotted white; }
 
 #top {
   text-align: left;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 #top h1 { 
