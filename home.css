@@ -15,9 +15,10 @@ section h1 { color: var(--primary) }
 
 .top {
   text-align: left;
+  padding-left: 10px;
 }
 
-.top h1 { border-left: 1px var(--primary) solid; }
+.top h1 { border-left: 1px solid var(--primary); }
 
 
 main {
