@@ -18,7 +18,7 @@ section h1 { color: var(--primary) }
   padding-left: 10px;
 }
 
-#top h1 { border-left: 1px solid var(--primary); }
+#top h1 { border-left: 5px solid var(--primary); }
 
 
 main {
