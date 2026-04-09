@@ -1,29 +1,37 @@
 section {
   text-align: left;
   padding-top: 150px;
+}
+
+section div { display: inline; }
+
+.main { width: 75%; }
+
+section h1 { color: var(--primary) }
+
+
+.scroll { border: 2px dotted white; }
+
+
+
+
+main {
   border: 2px dotted white;
 }
 
-section div {
-  display: inline;
+@keyframes bounce {
+  0% { transform: ; }
+  50% { transform: ; }
 }
 
-.main {
-  width: 75%;
-}
-
-section h1 {
-  color: var(--primary)
+@media (max-width: 700px) {
+  .card { display: none; }
+  section{ width: 100%; }
 }
 
 
-.scroll {
-  border: 2px dotted white;
-}
 
-/* ========================= */
 /* CTA BUTTON */
-/* ========================= */
 
 .cta {
   padding: 10px 18px;
@@ -51,23 +59,4 @@ section h1 {
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   100% { background-position: 100% 50%; }
-}
-
-
-
-
-
-
-main {
-  border: 2px dotted white;
-}
-
-@keyframes bounce {
-  0% { transform: ; }
-  50% { transform: ; }
-}
-
-@media (max-width: 700px) {
-  .card { display: none; }
-  section{ width: 100%; }
 }
