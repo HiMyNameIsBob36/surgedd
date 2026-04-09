@@ -10,8 +10,10 @@ section div { display: inline; }
 
 section h1 { 
   color: var(--primary);
-  font-size: 30px; /* adjusted */
+  font-size: 45px; /* adjusted */
 }
+
+section { font-size: 30px; }
 
 .scroll { border: 2px dotted white; }
 
