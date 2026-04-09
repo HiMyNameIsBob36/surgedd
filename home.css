@@ -1,7 +1,7 @@
 section {
   text-align: left;
   padding-top: 150px;
-  margin-left: 15px;
+  margin-left: 20px;
   font-size: 15px; /* adjusted */
 }
 
@@ -20,7 +20,7 @@ section { font-size: 30px; }
 
 #top {
   text-align: left;
-  padding-left: 15px;
+  margin-left: 20px;
 }
 
 #top h1 { 
