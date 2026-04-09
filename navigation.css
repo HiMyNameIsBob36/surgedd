@@ -22,7 +22,7 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-size: 17px; /* increased base font */
+  font-size: 15px; /* was 17px */
 }
 
 /* ========================= */
@@ -63,7 +63,7 @@ header {
   text-decoration: none;
   color: var(--primary);
   font-weight: 800;
-  font-size: 20px; /* bigger logo text */
+  font-size: 18px; /* was 20px */
   line-height: 1;
 }
 
@@ -93,7 +93,7 @@ header {
   position: relative;
   text-decoration: none;
   color: var(--muted);
-  font-size: 16px; /* increased */
+  font-size: 14px; /* was 16px */
   font-weight: 500;
   padding: 10px 16px; /* increased */
   border-radius: 12px;
@@ -154,7 +154,7 @@ header {
 /* footer columns */
 .footer-col h4 {
   margin-bottom: 12px;
-  font-size: 18px; /* increased */
+  font-size: 16px; /* was 18px */
 }
 
 .footer-col a {
@@ -165,7 +165,7 @@ header {
   color: var(--muted);
   text-decoration: none;
   margin-bottom: 8px;
-  font-size: 16px; /* increased */
+  font-size: 14px; /* was 16px */
 
   transition: color 0.2s ease;
 }
@@ -197,21 +197,21 @@ header {
 
 .brand h2 {
   color: var(--primary);
-  font-size: 22px; /* increased */
+  font-size: 20px; /* was 22px */
 }
 
 .brand p {
   color: var(--muted);
   margin-bottom: 12px;
   line-height: 1.6;
-  font-size: 16px;
+  font-size: 14px; /* was 16px */
 }
 
 .brand small {
   display: block;
   color: #6b7280;
   margin-top: 6px;
-  font-size: 14px;
+  font-size: 12px; /* was 14px */
 }
 
 .muted {
@@ -260,12 +260,12 @@ header {
   }
 
   .footer-col h4 {
-    font-size: 15px;
+    font-size: 13px; /* was 15px */
     margin-bottom: 8px;
   }
 
   .footer-col a {
-    font-size: 14px;
+    font-size: 12px; /* was 14px */
     justify-content: center;
   }
 
