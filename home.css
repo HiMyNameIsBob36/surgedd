@@ -13,12 +13,12 @@ section h1 { color: var(--primary) }
 .scroll { border: 2px dotted white; }
 
 
-.top {
+#top {
   text-align: left;
   padding-left: 10px;
 }
 
-.top h1 { border-left: 1px solid var(--primary); }
+#top h1 { border-left: 1px solid var(--primary); }
 
 
 main {
