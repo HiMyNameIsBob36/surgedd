@@ -1,4 +1,0 @@
-section { text-align: left; padding-top: 150px; } section div { display: inline; } .main { width: 75%; } section h1 { color: var(--primary) } .scroll { border: 2px dotted white; }
-
-
-
