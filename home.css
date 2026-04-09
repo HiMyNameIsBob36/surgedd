@@ -37,18 +37,8 @@ main {
 }
 
 @media (max-width: 700px) {
-  .card { display: none; }
-
-  section{ 
-    width: 100%;
-    font-size: 13px; /* adjusted */
-  }
-
-  section h1 {
-    font-size: 24px; /* adjusted */
-  }
+  section { width: 100%; } 
 }
-
 
 
 /* CTA BUTTON */
