@@ -38,6 +38,8 @@ main {
 
 @media (max-width: 700px) {
   section { width: 100%; } 
+  section h3 { font-size: ; }
+  section h5 { font-size: ; }
 }
 
 
