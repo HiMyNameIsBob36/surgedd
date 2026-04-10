@@ -1,92 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surgedd</title>
+
 <style>
- 
+
+/* ========================= */
+/* ROOT */
+/* ========================= */
+
+:root {
+  --primary: #3c9600;
+  --primary-light: #4bbd00;
+
+  --bg: #000;
+  --card: #02040a;
+
+  --text: #fff;
+  --muted: #a0a6b3;
+
+  --border: rgba(255,255,255,0.08);
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
 /* ========================= */
 /* SEARCH BAR */
 /* ========================= */
 
-.search-bar {
+.search-container {
   max-width: 1100px;
-  margin: 120px auto 30px;
+  margin: 100px auto 30px;
   padding: 0 20px;
 }
 
-.search-input-wrap {
+.search-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+
+  background: #02040a;
+  color: var(--text);
+}
+
+/* FILTER BUTTONS */
+.filter-btn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+
+  background: #02040a;
+  color: var(--muted);
+  cursor: pointer;
+
   position: relative;
 }
 
-.search-input-wrap input {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid var(--border);
-
-  background: #02040a;
-  color: var(--text);
-  font-size: 14px;
-}
-
-/* POPUP */
-.search-popup {
+/* DROPDOWN */
+.dropdown {
+  display: none;
   position: absolute;
   top: 110%;
   left: 0;
-  width: 100%;
 
   background: #02040a;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 10px;
 
-  display: none;
-  flex-direction: column;
-  padding: 6px;
+  padding: 8px;
+  min-width: 160px;
   z-index: 50;
 }
 
-.popup-item {
-  padding: 10px 12px;
-  border-radius: 8px;
-  color: var(--muted);
-  cursor: pointer;
-  transition: 0.2s;
+.filter-btn:focus-within .dropdown {
+  display: block;
 }
 
-.popup-item:hover {
+.dropdown div {
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.dropdown div:hover {
   background: rgba(255,255,255,0.05);
   color: var(--text);
-}
-
-/* show popup */
-.search-input-wrap:focus-within .search-popup {
-  display: flex;
 }
 
 /* ========================= */
 /* SERVER CARD */
 /* ========================= */
 
-.server-card {
-  max-width: 350px;
-  padding: 16px;
-  margin: 20px;
+.server-wrapper {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 20px;
+}
 
-  background: #02040a;
-  border: 1px solid var(--border);
+.server-card {
+  padding: 18px;
   border-radius: 16px;
 
-  transition: 0.2s ease;
+  background: var(--card);
+  border: 1px solid var(--border);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  transition: 0.2s;
 }
 
 .server-card:hover {
   border-color: var(--primary);
-  transform: translateY(-2px);
 }
 
-/* TOP TAGS */
+/* TAGS */
 .card-tags {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
-  margin-bottom: 10px;
 }
 
 .card-tags span {
@@ -94,95 +149,138 @@
   padding: 4px 8px;
   border-radius: 6px;
 
-  background: rgba(60,150,0,0.15);
+  background: rgba(60,150,0,0.2);
   color: var(--primary);
 }
 
 /* TITLE */
 .server-card h3 {
-  margin-bottom: 6px;
+  font-size: 18px;
 }
 
 /* STATUS */
 .status {
   font-size: 13px;
   color: var(--muted);
-  margin-bottom: 14px;
 }
 
-/* FOOTER */
-.card-footer {
+/* ACTIONS */
+.card-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  font-size: 13px;
-  color: var(--muted);
 }
 
-.stats {
-  display: flex;
-  gap: 12px;
+/* BUTTONS */
+.action-btn {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 14px;
+
+  transition: 0.2s;
+}
+
+.action-btn:hover {
+  color: var(--primary);
+}
+
+/* JOIN BUTTON */
+.join-btn {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
 }
 
 /* ========================= */
 /* MOBILE */
 /* ========================= */
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
 
-  .server-card {
-    max-width: 100%;
-    margin: 10px 20px;
+  .search-bar {
+    flex-direction: column;
   }
 
-} 
+}
+
 </style>
+</head>
 
+<body>
 
+<!-- SEARCH -->
+<div class="search-container">
+  <div class="search-bar">
 
-<!-- SEARCH BAR -->
-<div class="search-bar">
+    <input class="search-input" placeholder="🔎 Search servers…">
 
-  <div class="search-input-wrap">
-    <input type="text" placeholder="Search servers...">
-
-    <!-- POPUP -->
-    <div class="search-popup">
-      <div class="popup-item">Moderator</div>
-      <div class="popup-item">Developer</div>
-      <div class="popup-item">Serious RP</div>
-      <div class="popup-item">Beginner Friendly</div>
+    <!-- POSITIONS -->
+    <div class="filter-btn" tabindex="0">
+      Positions
+      <div class="dropdown">
+        <div>Moderator</div>
+        <div>Developer</div>
+        <div>Designer</div>
+      </div>
     </div>
+
+    <!-- QUOTA -->
+    <div class="filter-btn" tabindex="0">
+      Quota Range
+      <div class="dropdown">
+        <div>1–2</div>
+        <div>3–5</div>
+        <div>5+</div>
+      </div>
+    </div>
+
+    <!-- REGION -->
+    <div class="filter-btn" tabindex="0">
+      Region
+      <div class="dropdown">
+        <div>Global</div>
+        <div>Australia / NZ</div>
+        <div>North America</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SERVER -->
+<div class="server-wrapper">
+
+  <div class="server-card">
+
+    <div class="card-tags">
+      <span>MODERATOR</span>
+      <span>DEVELOPER</span>
+    </div>
+
+    <h3>Surgedd RP</h3>
+
+    <p class="status">ACTIVE • HIRING</p>
+
+    <div class="card-actions">
+
+      <div>
+        <button class="action-btn">❤️</button>
+        <button class="action-btn">🚩</button>
+      </div>
+
+      <button class="join-btn">Join</button>
+
+    </div>
+
   </div>
 
 </div>
 
-
-<!-- SERVER CARD -->
-<div class="server-card">
-
-  <!-- TOP TAGS (POSITIONS ONLY) -->
-  <div class="card-tags">
-    <span>MODERATOR</span>
-    <span>DEVELOPER</span>
-    <span>+1</span>
-  </div>
-
-  <!-- TITLE -->
-  <h3>Surgedd RP</h3>
-
-  <!-- STATUS (replaces description) -->
-  <p class="status">ACTIVE • HIRING</p>
-
-  <!-- BOTTOM BAR -->
-  <div class="card-footer">
-    <span class="owner">Surgedd Team</span>
-
-    <div class="stats">
-      <span>👁 120</span>
-      <span>❤ 12</span>
-    </div>
-  </div>
-
-</div>
+</body>
+</html>
