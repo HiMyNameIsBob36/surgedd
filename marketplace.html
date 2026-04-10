@@ -1,314 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+   <title>Home | Surgedd</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../navigation.css">
+    <link rel="stylesheet" href="../home.css">
+    <script src="../elements.js" defer></script>
+    <link rel="icon" href="../media/logo.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSWRP Server Browser</title>
-    <style>
-        :root {
-            --bg-color: #000000;
-            --card-bg: #111111;
-            --border-color: #333;
-            --text-main: #ffffff;
-            --accent-green: #44a022;
-            --tag-bg: #1e3a15;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Search Bar & Filter Header */
-        .header-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            width: 100%;
-            max-width: 900px;
-            margin-bottom: 30px;
-        }
-
-        .search-main {
-            flex: 2;
-            min-width: 300px;
-            position: relative;
-        }
-
-        .filter-group {
-            position: relative;
-            flex: 1;
-            min-width: 140px;
-        }
-
-        .filter-group label {
-            position: absolute;
-            top: -8px;
-            left: 10px;
-            background: var(--bg-color);
-            padding: 0 5px;
-            font-size: 11px;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 2;
-        }
-
-        input, select {
-            width: 100%;
-            background: transparent;
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            padding: 12px;
-            color: white;
-            box-sizing: border-box;
-            outline: none;
-            appearance: none; /* Removes default arrow for custom look */
-        }
-
-        select {
-            cursor: pointer;
-        }
-
-        input:focus, select:focus {
-            border-color: var(--accent-green);
-        }
-
-        /* Server List Area */
-        #server-list {
-            width: 100%;
-            max-width: 900px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        /* Server Card Styling */
-        .server-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            transition: transform 0.1s;
-        }
-
-        .logo-section img {
-            width: 60px;
-            height: auto;
-            filter: drop-shadow(0 0 5px rgba(243, 156, 18, 0.3));
-        }
-
-        .info-section {
-            flex-grow: 1;
-        }
-
-        .tags {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 8px;
-        }
-
-        .tag {
-            background: var(--tag-bg);
-            color: #a3e681;
-            padding: 2px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .description {
-            font-size: 14px;
-            color: #ccc;
-            line-height: 1.4;
-        }
-
-        .description b {
-            color: #fff;
-        }
-
-        /* Buttons on Right */
-        .actions {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .icon-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--accent-green);
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Toast */
-        #toast {
-            visibility: hidden;
-            background-color: #222;
-            color: var(--accent-green);
-            border: 1px solid var(--accent-green);
-            text-align: center;
-            border-radius: 8px;
-            padding: 12px 24px;
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        #toast.show {
-            visibility: visible;
-            animation: slideIn 0.4s ease-out;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        /* Mobile Layout */
-        @media (max-width: 600px) {
-            .header-container { flex-direction: column; }
-            .server-card { flex-direction: column; text-align: center; }
-            .actions { flex-direction: row; margin-top: 10px; }
-            .tags { justify-content: center; }
-        }
-    </style>
+    <meta property="og:title" content="Home | Surgedd" />
+    <meta property="og:description" content="Surgedd - Conntecting servers with the right people." />
+    <meta property="og:image" content="https://surgedd.netlify.app/media/logo.png" />
+    <meta name="theme-color" content="#3c9600">   
 </head>
-<body>
 
-    <div class="header-container">
-        <div class="filter-group search-main">
-            <input type="text" id="nameSearch" placeholder="🔍 Search servers..." oninput="filterServers()">
-        </div>
+   <body>
+<header>
+  <div class="nav-inner">
 
-        <div class="filter-group">
-            <label>Positions</label>
-            <select id="posFilter" onchange="filterServers()">
-                <option value="all">Any Position</option>
-                <option value="Developer">Developer</option>
-                <option value="Oversight">Oversight</option>
-                <option value="Staff">Staff</option>
-            </select>
-        </div>
+    <div class="logo"><a href=""><img src="../media/Surgedd.png"><span>Surgedd</span></a></div>
 
-        <div class="filter-group" style="max-width: 100px;">
-            <label>Quota</label>
-            <input type="number" id="quotaFilter" placeholder="Max" oninput="filterServers()">
-        </div>
+    <nav class="nav-links">
+      <a href="#"><img src="../media/support.svg"><span>Support</span></a>
+      <a href="#"><img src="../media/marketplace.svg"><span>Marketplace</span></a>
+      <a href="#"><img src="../media/account.svg"><span>Account</span></a>
+    </nav>
 
-        <div class="filter-group">
-            <label>Region</label>
-            <select id="regionFilter" onchange="filterServers()">
-                <option value="all">Any Region</option>
-                <option value="NSW">New South Wales</option>
-                <option value="VIC">Victoria</option>
-                <option value="QLD">Queensland</option>
-            </select>
-        </div>
+  </div>
+</header>
+
+<section class="main">
+   <h1>Surgedd</h1>
+   <h3>Connecting servers with the right people.</h3>
+   <h5 class="muted">Explore servers with Surgedd, or create your own.</h5>  
+   <a href="account" class="cta">Get Started →</a> <a href="#" class="cta">Explore Marketplace</a>
+ </section>
+
+       
+      <div id="marketplace">
+        <div id="search"><img src="../media/search.svg"><input placeholder="Search servers..."></div>
+          
+          <div class="server">
+              <img src="../media/nswrp.png">
+              <span>MODERATOR</span><span>MANAGEMENT</span><span>SUPERVISOR</span>
+              <p>NSWRP is a server...</p>
+          </div>
+          
+      </div>
+
+      
+<footer class="footer">
+  <div class="footer-inner">
+
+    <div class="footer-col brand">
+      <h2>Surgedd</h2>
+      <p>Connecting servers with the right people..</p>
+      <small>© 2026 @_sammy36. All rights reserved.</small>
+      <small class="muted">This site is not endorsed by nor affiliated with Roblox Corporation.</small>
     </div>
 
-    <div id="server-list"></div>
+    <div class="footer-group">
 
-    <div id="toast">Link copied to clipboard!</div>
+      <div class="footer-col">
+        <h4>GET IN TOUCH</h4>
+        <a href="mailto:"><img src="../media/mail.svg">Email</a>
+        <a href="#"><img src="../media/chat.svg">Discord</a>      
+        <a href="#"><img src="../media/github.svg">GitHub</a>
+      </div>
 
-    <script>
-        // Mock data representing different servers
-        const servers = [
-            {
-                name: "NSW Roleplay",
-                tags: ["Developer", "Oversight"],
-                description: "NSWRP is a friendly welcoming server based in New South Wales. Join the team!",
-                region: "NSW",
-                quota: 10
-            },
-            {
-                name: "Victoria Life",
-                tags: ["Staff"],
-                description: "The premier Victorian roleplay experience. Looking for active moderators.",
-                region: "VIC",
-                quota: 5
-            },
-            {
-                name: "Sydney Nights",
-                tags: ["Developer"],
-                description: "Hardcore RP based in the heart of NSW. Coding experience required.",
-                region: "NSW",
-                quota: 15
-            }
-        ];
+      <div class="footer-col">
+        <h4>RESOURCES</h4>
+       <a href="guidelines">Guidelines</a>
+        <a href="privacy">Privacy Policy</a>
+        <a href="status">Status Page</a>
+      </div>
 
-        function renderServers(data) {
-            const list = document.getElementById('server-list');
-            list.innerHTML = '';
+    </div>
 
-            data.forEach(server => {
-                list.innerHTML += `
-                    <div class="server-card">
-                        <div class="logo-section">
-                            <img src="https://i.imgur.com/8Yl6uS2.png" alt="logo" onerror="this.src='https://via.placeholder.com/60?text=NSW'">
-                        </div>
-                        <div class="info-section">
-                            <div class="tags">
-                                ${server.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-                            </div>
-                            <div class="description">
-                                <b>${server.name}</b> - ${server.description} <br>
-                                <small>Region: ${server.region} | Quota: ${server.quota}</small>
-                            </div>
-                        </div>
-                        <div class="actions">
-                            <button class="icon-btn"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg></button>
-                            <button class="icon-btn"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg></button>
-                            <button class="icon-btn" onclick="copyShareLink()"><svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg></button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function filterServers() {
-            const nameVal = document.getElementById('nameSearch').value.toLowerCase();
-            const posVal = document.getElementById('posFilter').value;
-            const quotaVal = document.getElementById('quotaFilter').value;
-            const regionVal = document.getElementById('regionFilter').value;
-
-            const filtered = servers.filter(s => {
-                const matchesName = s.name.toLowerCase().includes(nameVal);
-                const matchesPos = posVal === 'all' || s.tags.includes(posVal);
-                const matchesRegion = regionVal === 'all' || s.region === regionVal;
-                const matchesQuota = !quotaVal || s.quota <= parseInt(quotaVal);
-
-                return matchesName && matchesPos && matchesRegion && matchesQuota;
-            });
-
-            renderServers(filtered);
-        }
-
-        function copyShareLink() {
-            navigator.clipboard.writeText(window.location.href);
-            const toast = document.getElementById("toast");
-            toast.className = "show";
-            setTimeout(() => { toast.className = ""; }, 3000);
-        }
-
-        // Initial render
-        renderServers(servers);
-    </script>
-</body>
+  </div>
+</footer>
 </html>
+</body>
