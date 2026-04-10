@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -13,18 +13,13 @@
 
 :root {
   --primary: #3c9600;
-  --primary-glow: #4bbd00;
-
+  --border: rgba(255,255,255,0.15);
   --bg: #000;
   --card: #02040a;
-
   --text: #fff;
   --muted: #8b8f98;
-
-  --border: rgba(255,255,255,0.15);
 }
 
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -39,21 +34,17 @@ body {
 }
 
 /* ========================= */
-/* SEARCH */
+/* SEARCH BAR */
 /* ========================= */
-
-.search-wrapper {
-  max-width: 1100px;
-  margin: auto;
-}
 
 .search-row {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  max-width: 1100px;
+  margin: auto;
 }
 
-/* SEARCH INPUT */
 .search-box {
   flex: 1;
   display: flex;
@@ -65,10 +56,6 @@ body {
   border: 2px solid var(--border);
 }
 
-.search-box span {
-  opacity: 0.6;
-}
-
 .search-box input {
   background: none;
   border: none;
@@ -77,7 +64,8 @@ body {
   width: 100%;
 }
 
-/* FILTER BOXES */
+/* FILTER BOX */
+
 .filter-box {
   padding: 10px 16px;
   border-radius: 30px;
@@ -85,14 +73,19 @@ body {
   color: var(--muted);
   cursor: pointer;
   position: relative;
+  min-width: 100px;
+  text-align: center;
 }
 
+/* ========================= */
 /* POPUPS */
+/* ========================= */
+
 .popup {
   position: absolute;
   top: 120%;
   left: 0;
-  background: #02040a;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 10px;
@@ -104,43 +97,34 @@ body {
   display: block;
 }
 
-/* ITEMS */
-.popup div {
-  padding: 8px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.popup div:hover {
-  background: rgba(255,255,255,0.05);
-}
-
-/* MULTI SELECT */
-.popup div.selected {
-  background: var(--primary);
-  color: white;
-}
-
 /* ========================= */
-/* QUOTA INPUT */
+/* QUOTA */
 /* ========================= */
 
+.quota-popup {
+  width: 200px;
+}
+
+/* INPUT DISPLAY */
 .quota-inputs {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 6px;
   margin-bottom: 10px;
 }
 
 .quota-inputs input {
-  width: 60px;
+  width: 50px;
+  text-align: center;
   padding: 6px;
   background: #000;
   border: 1px solid var(--border);
   color: white;
-  text-align: center;
+  border-radius: 6px;
 }
 
-/* NUMBER PAD */
+/* NUMPAD */
 .numpad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -149,11 +133,15 @@ body {
 
 .numpad button {
   padding: 10px;
-  background: #000;
-  border: 1px solid var(--border);
-  color: white;
   border-radius: 6px;
+  border: 1px solid var(--border);
+  background: #000;
+  color: white;
   cursor: pointer;
+}
+
+.numpad button:hover {
+  background: rgba(255,255,255,0.05);
 }
 
 /* ========================= */
@@ -174,12 +162,10 @@ body {
   gap: 16px;
 }
 
-/* LOGO */
 .server-logo {
   width: 80px;
 }
 
-/* CONTENT */
 .server-content {
   flex: 1;
 }
@@ -201,16 +187,16 @@ body {
   font-weight: 600;
 }
 
-/* ACTIONS RIGHT */
+/* ACTIONS */
+
 .actions {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* SVG ICONS */
 .icon {
-  width: 22px;   /* smaller like you wanted */
+  width: 22px;
   height: 22px;
   cursor: pointer;
   transition: 0.2s;
@@ -220,40 +206,9 @@ body {
   transform: scale(1.1);
 }
 
-/* BOOKMARK ANIMATION */
 .bookmark.active {
   fill: var(--primary);
-  filter: drop-shadow(0 0 6px var(--primary-glow));
   transform: scale(1.2);
-}
-
-/* ========================= */
-/* SHARE POPUP */
-/* ========================= */
-
-.share-popup {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-
-  background: #02040a;
-  border: 1px solid var(--border);
-  padding: 12px;
-  border-radius: 12px;
-
-  display: none;
-}
-
-.share-popup.active {
-  display: block;
-}
-
-.share-popup input {
-  width: 200px;
-  padding: 6px;
-  background: #000;
-  border: 1px solid var(--border);
-  color: white;
 }
 
 /* ========================= */
@@ -276,60 +231,61 @@ body {
 
 <body>
 
-<div class="search-wrapper">
+<!-- SEARCH -->
+<div class="search-row">
 
-  <div class="search-row">
+  <div class="search-box">
+    🔎 <input value="Search servers...">
+  </div>
 
-    <!-- SEARCH -->
-    <div class="search-box">
-      <span>🔎</span>
-      <input value="Search servers...">
+  <!-- POSITIONS -->
+  <div class="filter-box" onclick="toggle(this)">
+    Positions
+    <div class="popup">
+      <div onclick="multi(this)">Moderator</div>
+      <div onclick="multi(this)">Developer</div>
+      <div onclick="multi(this)">Designer</div>
     </div>
+  </div>
 
-    <!-- POSITIONS -->
-    <div class="filter-box" onclick="toggle(this)">
-      Positions
-      <div class="popup">
-        <div onclick="selectMulti(this)">Moderator</div>
-        <div onclick="selectMulti(this)">Developer</div>
-        <div onclick="selectMulti(this)">Designer</div>
+  <!-- QUOTA -->
+  <div class="filter-box quota-box" onclick="toggleQuota(event)">
+    <span id="quotaDisplay">? - ?</span>
+
+    <div class="popup quota-popup">
+
+      <div class="quota-inputs">
+        <input id="min" readonly placeholder="?">
+        <span>-</span>
+        <input id="max" readonly placeholder="?">
       </div>
-    </div>
 
-    <!-- QUOTA -->
-    <div class="filter-box" onclick="toggle(this)">
-      Quota
-      <div class="popup">
-        <div class="quota-inputs">
-          <input id="min" placeholder="1">
-          <input id="max" placeholder="2">
-        </div>
-
-        <div class="numpad">
-          <button onclick="addNum(1)">1</button>
-          <button onclick="addNum(2)">2</button>
-          <button onclick="addNum(3)">3</button>
-          <button onclick="addNum(4)">4</button>
-          <button onclick="addNum(5)">5</button>
-          <button onclick="addNum(6)">6</button>
-          <button onclick="addNum(7)">7</button>
-          <button onclick="addNum(8)">8</button>
-          <button onclick="addNum(9)">9</button>
-          <button onclick="addNum(0)">0</button>
-        </div>
+      <div class="numpad">
+        <button onclick="pressNum(1)">1</button>
+        <button onclick="pressNum(2)">2</button>
+        <button onclick="pressNum(3)">3</button>
+        <button onclick="pressNum(4)">4</button>
+        <button onclick="pressNum(5)">5</button>
+        <button onclick="pressNum(6)">6</button>
+        <button onclick="pressNum(7)">7</button>
+        <button onclick="pressNum(8)">8</button>
+        <button onclick="pressNum(9)">9</button>
+        <button onclick="clearNum()">⌫</button>
+        <button onclick="pressNum(0)">0</button>
+        <button onclick="applyQuota()">✓</button>
       </div>
-    </div>
 
-    <!-- REGION -->
-    <div class="filter-box" onclick="toggle(this)">
-      Region
-      <div class="popup">
-        <div onclick="selectSingle(this)">Global</div>
-        <div onclick="selectSingle(this)">Australia</div>
-        <div onclick="selectSingle(this)">Europe</div>
-      </div>
     </div>
+  </div>
 
+  <!-- REGION -->
+  <div class="filter-box" onclick="toggle(this)">
+    Region
+    <div class="popup">
+      <div onclick="single(this)">Global</div>
+      <div onclick="single(this)">Australia</div>
+      <div onclick="single(this)">Europe</div>
+    </div>
   </div>
 
 </div>
@@ -345,50 +301,39 @@ body {
       <span>OVERSIGHT</span>
     </div>
 
-    <p>NSWRP is a friendly welcoming server that is based in NSW Australia.</p>
+    <p>NSWRP is a friendly welcoming server based in NSW Australia.</p>
   </div>
 
   <div class="actions">
-
-    <!-- BOOKMARK -->
     <svg class="icon bookmark" onclick="bookmark(this)" viewBox="0 0 24 24" fill="white">
       <path d="M6 2h12v20l-6-4-6 4z"/>
     </svg>
 
-    <!-- REPORT -->
     <svg class="icon" viewBox="0 0 24 24" fill="white">
       <path d="M4 4h12l-2 4 2 4H4z"/>
     </svg>
 
-    <!-- SHARE -->
-    <svg class="icon" onclick="share()" viewBox="0 0 24 24" fill="white">
+    <svg class="icon" viewBox="0 0 24 24" fill="white">
       <path d="M14 9l-4-4v3H4v2h6v3z"/>
     </svg>
-
   </div>
 
 </div>
 
-<!-- SHARE POPUP -->
-<div class="share-popup" id="shareBox">
-  <input value="https://surgedd.com/server">
-  <button onclick="copy()">Copy</button>
-</div>
-
 <script>
 
-/* TOGGLE POPUPS */
+/* GENERIC TOGGLE */
 function toggle(el){
   el.classList.toggle("active");
 }
 
 /* MULTI SELECT */
-function selectMulti(el){
+function multi(el){
   el.classList.toggle("selected");
 }
 
-/* SINGLE SELECT */
-function selectSingle(el){
+/* SINGLE */
+function single(el){
   let items = el.parentElement.children;
   for(let i of items) i.classList.remove("selected");
   el.classList.add("selected");
@@ -399,26 +344,44 @@ function bookmark(el){
   el.classList.toggle("active");
 }
 
-/* SHARE */
-function share(){
-  document.getElementById("shareBox").classList.toggle("active");
+/* ========================= */
+/* QUOTA SYSTEM */
+/* ========================= */
+
+let activeField = "min";
+
+function toggleQuota(e){
+  e.stopPropagation();
+  document.querySelector(".quota-box").classList.toggle("active");
 }
 
-/* COPY */
-function copy(){
-  navigator.clipboard.writeText("https://surgedd.com/server");
+document.getElementById("min").onclick = () => activeField = "min";
+document.getElementById("max").onclick = () => activeField = "max";
+
+function pressNum(num){
+  let input = document.getElementById(activeField);
+  if(input.value.length >= 2) return;
+  input.value += num;
 }
 
-/* NUMPAD */
-let activeInput = null;
+function clearNum(){
+  let input = document.getElementById(activeField);
+  input.value = input.value.slice(0, -1);
+}
 
-document.querySelectorAll(".quota-inputs input").forEach(i=>{
-  i.onclick = ()=> activeInput = i;
+function applyQuota(){
+  let min = document.getElementById("min").value || "?";
+  let max = document.getElementById("max").value || "?";
+
+  document.getElementById("quotaDisplay").innerText = `${min} - ${max}`;
+
+  document.querySelector(".quota-box").classList.remove("active");
+}
+
+/* CLOSE ON OUTSIDE CLICK */
+document.addEventListener("click", () => {
+  document.querySelectorAll(".filter-box").forEach(el => el.classList.remove("active"));
 });
-
-function addNum(n){
-  if(activeInput) activeInput.value += n;
-}
 
 </script>
 
