@@ -1,389 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Surgedd</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSW Roleplay Server Browser</title>
+    <style>
+        :root {
+            --bg-color: #000000;
+            --card-bg: #111111;
+            --border-color: #444;
+            --text-main: #ffffff;
+            --accent-green: #44a022;
+            --tag-bg: #2d5a1e;
+        }
 
-<style>
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-/* ========================= */
-/* ROOT */
-/* ========================= */
+        /* Top Navigation / Filters */
+        .search-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 20px;
+        }
 
-:root {
-  --primary: #3c9600;
-  --border: rgba(255,255,255,0.15);
-  --bg: #000;
-  --card: #02040a;
-  --text: #fff;
-  --muted: #8b8f98;
-}
+        .input-group {
+            position: relative;
+            flex: 1;
+            min-width: 200px;
+        }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Inter, sans-serif;
-}
+        .input-group label {
+            position: absolute;
+            top: -8px;
+            left: 12px;
+            background: var(--bg-color);
+            padding: 0 5px;
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  padding: 40px 20px;
-}
+        input {
+            width: 100%;
+            background: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px;
+            color: white;
+            box-sizing: border-box;
+            outline: none;
+        }
 
-/* ========================= */
-/* SEARCH BAR */
-/* ========================= */
+        input:focus {
+            border-color: var(--accent-green);
+        }
 
-.search-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  max-width: 1100px;
-  margin: auto;
-}
+        .search-main {
+            flex: 3;
+            min-width: 300px;
+        }
 
-.search-box {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+        /* Server Card */
+        .server-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            width: 100%;
+            max-width: 1000px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
 
-  padding: 12px 16px;
-  border-radius: 30px;
-  border: 2px solid var(--border);
-}
+        .logo-section img {
+            width: 80px;
+            height: auto;
+        }
 
-.search-box input {
-  background: none;
-  border: none;
-  outline: none;
-  color: white;
-  width: 100%;
-}
+        .content-section {
+            flex-grow: 1;
+        }
 
-/* FILTER BOX */
+        .tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
 
-.filter-box {
-  padding: 10px 16px;
-  border-radius: 30px;
-  border: 2px solid var(--border);
-  color: var(--muted);
-  cursor: pointer;
-  position: relative;
-  min-width: 100px;
-  text-align: center;
-}
+        .tag {
+            background: var(--tag-bg);
+            color: #8fce7c;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
 
-/* ========================= */
-/* POPUPS */
-/* ========================= */
+        .description {
+            font-size: 15px;
+            line-height: 1.4;
+            font-weight: 500;
+        }
 
-.popup {
-  position: absolute;
-  top: 120%;
-  left: 0;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 10px;
-  display: none;
-  z-index: 100;
-}
+        /* Action Buttons (Right Side) */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
 
-.filter-box.active .popup {
-  display: block;
-}
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--accent-green);
+            transition: transform 0.2s;
+        }
 
-/* ========================= */
-/* QUOTA */
-/* ========================= */
+        .icon-btn:hover {
+            transform: scale(1.1);
+        }
 
-.quota-popup {
-  width: 200px;
-}
+        /* Toast Notification */
+        #toast {
+            visibility: hidden;
+            min-width: 200px;
+            background-color: var(--accent-green);
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            right: 30px;
+            bottom: 30px;
+            font-weight: bold;
+        }
 
-/* INPUT DISPLAY */
-.quota-inputs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 10px;
-}
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
 
-.quota-inputs input {
-  width: 50px;
-  text-align: center;
-  padding: 6px;
-  background: #000;
-  border: 1px solid var(--border);
-  color: white;
-  border-radius: 6px;
-}
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
-/* NUMPAD */
-.numpad {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-}
-
-.numpad button {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: #000;
-  color: white;
-  cursor: pointer;
-}
-
-.numpad button:hover {
-  background: rgba(255,255,255,0.05);
-}
-
-/* ========================= */
-/* SERVER CARD */
-/* ========================= */
-
-.server-card {
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 16px;
-
-  border-radius: 20px;
-  border: 2px solid var(--border);
-  background: var(--card);
-
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.server-logo {
-  width: 80px;
-}
-
-.server-content {
-  flex: 1;
-}
-
-.tags {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 6px;
-}
-
-.tags span {
-  background: rgba(60,150,0,0.3);
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-}
-
-.server-content p {
-  font-weight: 600;
-}
-
-/* ACTIONS */
-
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.icon {
-  width: 22px;
-  height: 22px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.icon:hover {
-  transform: scale(1.1);
-}
-
-.bookmark.active {
-  fill: var(--primary);
-  transform: scale(1.2);
-}
-
-/* ========================= */
-/* MOBILE */
-/* ========================= */
-
-@media (max-width: 900px) {
-  .server-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .actions {
-    flex-direction: row;
-  }
-}
-
-</style>
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .server-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .actions {
+                flex-direction: row;
+                width: 100%;
+                justify-content: center;
+                padding-top: 10px;
+            }
+            .tags {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- SEARCH -->
-<div class="search-row">
+    <div class="search-container">
+        <div class="input-group search-main">
+            <input type="text" placeholder="🔍 Search servers...">
+        </div>
 
-  <div class="search-box">
-    🔎 <input value="Search servers...">
-  </div>
+        <div class="input-group">
+            <label>Positions</label>
+            <input type="text" id="posInput" placeholder="Dev, Staff...">
+        </div>
 
-  <!-- POSITIONS -->
-  <div class="filter-box" onclick="toggle(this)">
-    Positions
-    <div class="popup">
-      <div onclick="multi(this)">Moderator</div>
-      <div onclick="multi(this)">Developer</div>
-      <div onclick="multi(this)">Designer</div>
-    </div>
-  </div>
+        <div class="input-group" style="flex: 0.5; min-width: 100px;">
+            <label>Quota</label>
+            <input type="text" id="quotaInput" placeholder="? - ?">
+        </div>
 
-  <!-- QUOTA -->
-  <div class="filter-box quota-box" onclick="toggleQuota(event)">
-    <span id="quotaDisplay">? - ?</span>
-
-    <div class="popup quota-popup">
-
-      <div class="quota-inputs">
-        <input id="min" readonly placeholder="?">
-        <span>-</span>
-        <input id="max" readonly placeholder="?">
-      </div>
-
-      <div class="numpad">
-        <button onclick="pressNum(1)">1</button>
-        <button onclick="pressNum(2)">2</button>
-        <button onclick="pressNum(3)">3</button>
-        <button onclick="pressNum(4)">4</button>
-        <button onclick="pressNum(5)">5</button>
-        <button onclick="pressNum(6)">6</button>
-        <button onclick="pressNum(7)">7</button>
-        <button onclick="pressNum(8)">8</button>
-        <button onclick="pressNum(9)">9</button>
-        <button onclick="clearNum()">⌫</button>
-        <button onclick="pressNum(0)">0</button>
-        <button onclick="applyQuota()">✓</button>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- REGION -->
-  <div class="filter-box" onclick="toggle(this)">
-    Region
-    <div class="popup">
-      <div onclick="single(this)">Global</div>
-      <div onclick="single(this)">Australia</div>
-      <div onclick="single(this)">Europe</div>
-    </div>
-  </div>
-
-</div>
-
-<!-- SERVER -->
-<div class="server-card">
-
-  <img class="server-logo" src="https://via.placeholder.com/80">
-
-  <div class="server-content">
-    <div class="tags">
-      <span>DEVELOPER</span>
-      <span>OVERSIGHT</span>
+        <div class="input-group">
+            <label>Region</label>
+            <input type="text" id="regionInput" placeholder="NSW, VIC...">
+        </div>
     </div>
 
-    <p>NSWRP is a friendly welcoming server based in NSW Australia.</p>
-  </div>
+    <div class="server-card">
+        <div class="logo-section">
+            <svg width="80" height="60" viewBox="0 0 100 80">
+                <path d="M20,50 Q50,10 80,50" fill="none" stroke="#f39c12" stroke-width="4"/>
+                <circle cx="50" cy="45" r="15" fill="#f39c12" />
+                <text x="10" y="75" fill="#f39c12" font-size="10" font-weight="bold">NSW ROLEPLAY</text>
+            </svg>
+        </div>
 
-  <div class="actions">
-    <svg class="icon bookmark" onclick="bookmark(this)" viewBox="0 0 24 24" fill="white">
-      <path d="M6 2h12v20l-6-4-6 4z"/>
-    </svg>
+        <div class="content-section">
+            <div class="tags">
+                <span class="tag">Developer</span>
+                <span class="tag">Oversight</span>
+            </div>
+            <div class="description">
+                NSWRP is a friendly welcoming server that is based in <span id="displayRegion">New South Wales</span> Australia. 
+                We are currently looking for <span id="displayPos">Staff</span>. 
+                Quota: <span id="displayQuota">? - ?</span>. We would love to have YOU on the team!
+            </div>
+        </div>
 
-    <svg class="icon" viewBox="0 0 24 24" fill="white">
-      <path d="M4 4h12l-2 4 2 4H4z"/>
-    </svg>
+        <div class="actions">
+            <button class="icon-btn">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg>
+            </button>
+            <button class="icon-btn">
+                <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6z"/></svg>
+            </button>
+            <button class="icon-btn" onclick="copyLink()">
+                <svg width="28" height="28" fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
+            </button>
+        </div>
+    </div>
 
-    <svg class="icon" viewBox="0 0 24 24" fill="white">
-      <path d="M14 9l-4-4v3H4v2h6v3z"/>
-    </svg>
-  </div>
+    <div id="toast">Link copied to clipboard!</div>
 
-</div>
+    <script>
+        // Live Update Logic
+        const posInput = document.getElementById('posInput');
+        const quotaInput = document.getElementById('quotaInput');
+        const regionInput = document.getElementById('regionInput');
 
-<script>
+        const displayPos = document.getElementById('displayPos');
+        const displayQuota = document.getElementById('displayQuota');
+        const displayRegion = document.getElementById('displayRegion');
 
-/* GENERIC TOGGLE */
-function toggle(el){
-  el.classList.toggle("active");
-}
+        posInput.addEventListener('input', (e) => {
+            displayPos.innerText = e.target.value || "Staff";
+        });
 
-/* MULTI SELECT */
-function multi(el){
-  el.classList.toggle("selected");
-}
+        quotaInput.addEventListener('input', (e) => {
+            // Basic number/range filter
+            displayQuota.innerText = e.target.value || "? - ?";
+        });
 
-/* SINGLE */
-function single(el){
-  let items = el.parentElement.children;
-  for(let i of items) i.classList.remove("selected");
-  el.classList.add("selected");
-}
+        regionInput.addEventListener('input', (e) => {
+            displayRegion.innerText = e.target.value || "New South Wales";
+        });
 
-/* BOOKMARK */
-function bookmark(el){
-  el.classList.toggle("active");
-}
+        // Copy Link & Toast Logic
+        function copyLink() {
+            const dummy = document.createElement('input');
+            const text = window.location.href;
 
-/* ========================= */
-/* QUOTA SYSTEM */
-/* ========================= */
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
 
-let activeField = "min";
-
-function toggleQuota(e){
-  e.stopPropagation();
-  document.querySelector(".quota-box").classList.toggle("active");
-}
-
-document.getElementById("min").onclick = () => activeField = "min";
-document.getElementById("max").onclick = () => activeField = "max";
-
-function pressNum(num){
-  let input = document.getElementById(activeField);
-  if(input.value.length >= 2) return;
-  input.value += num;
-}
-
-function clearNum(){
-  let input = document.getElementById(activeField);
-  input.value = input.value.slice(0, -1);
-}
-
-function applyQuota(){
-  let min = document.getElementById("min").value || "?";
-  let max = document.getElementById("max").value || "?";
-
-  document.getElementById("quotaDisplay").innerText = `${min} - ${max}`;
-
-  document.querySelector(".quota-box").classList.remove("active");
-}
-
-/* CLOSE ON OUTSIDE CLICK */
-document.addEventListener("click", () => {
-  document.querySelectorAll(".filter-box").forEach(el => el.classList.remove("active"));
-});
-
-</script>
-
+            // Show Toast
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+    </script>
 </body>
 </html>
