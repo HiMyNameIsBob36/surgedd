@@ -1,60 +1,63 @@
 <style>
-  
+ 
 /* ========================= */
-/* SEARCH */
+/* SEARCH BAR */
 /* ========================= */
 
-.search-wrapper {
-  max-width: 900px;
+.search-bar {
+  max-width: 1100px;
   margin: 120px auto 30px;
   padding: 0 20px;
 }
 
-.search-input {
+.search-input-wrap {
+  position: relative;
+}
+
+.search-input-wrap input {
   width: 100%;
-  padding: 14px;
-  border-radius: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
   border: 1px solid var(--border);
 
   background: #02040a;
   color: var(--text);
-  margin-bottom: 20px;
+  font-size: 14px;
 }
 
-/* FILTER GROUPS */
-.filter-groups {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+/* POPUP */
+.search-popup {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
 
-.filter-group span {
-  font-size: 13px;
-  color: var(--muted);
-  display: block;
-  margin-bottom: 6px;
-}
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.filters button {
-  padding: 6px 12px;
-  border-radius: 999px;
+  background: #02040a;
   border: 1px solid var(--border);
-  background: transparent;
+  border-radius: 12px;
+
+  display: none;
+  flex-direction: column;
+  padding: 6px;
+  z-index: 50;
+}
+
+.popup-item {
+  padding: 10px 12px;
+  border-radius: 8px;
   color: var(--muted);
   cursor: pointer;
-
-  transition: 0.2s ease;
+  transition: 0.2s;
 }
 
-.filters button:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+.popup-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+}
+
+/* show popup */
+.search-input-wrap:focus-within .search-popup {
+  display: flex;
 }
 
 /* ========================= */
@@ -62,13 +65,9 @@
 /* ========================= */
 
 .server-card {
-  max-width: 900px;
-  margin: auto;
-  padding: 18px;
-
-  display: flex;
-  gap: 16px;
-  align-items: center;
+  max-width: 350px;
+  padding: 16px;
+  margin: 20px;
 
   background: #02040a;
   border: 1px solid var(--border);
@@ -82,74 +81,48 @@
   transform: translateY(-2px);
 }
 
-/* ICON */
-.server-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 16px;
-}
-
-/* INFO */
-.server-info {
-  flex: 1;
-}
-
-.server-info h3 {
-  margin-bottom: 4px;
-}
-
-.server-info p {
-  font-size: 14px;
-  color: var(--muted);
+/* TOP TAGS */
+.card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
   margin-bottom: 10px;
 }
 
-/* TAGS */
-.tag-section {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tags span {
-  font-size: 12px;
+.card-tags span {
+  font-size: 11px;
   padding: 4px 8px;
-  border-radius: 999px;
-}
+  border-radius: 6px;
 
-/* PRIMARY (important filters) */
-.tags.primary span {
-  background: rgba(60,150,0,0.2);
+  background: rgba(60,150,0,0.15);
   color: var(--primary);
 }
 
-/* EXTRA (secondary info) */
-.tags.extra span {
-  background: rgba(255,255,255,0.05);
+/* TITLE */
+.server-card h3 {
+  margin-bottom: 6px;
+}
+
+/* STATUS */
+.status {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+/* FOOTER */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 13px;
   color: var(--muted);
 }
 
-/* BUTTON */
-.join-btn {
-  padding: 10px 18px;
-  border-radius: 999px;
-  border: none;
-
-  background: var(--primary);
-  color: white;
-  cursor: pointer;
-
-  transition: 0.2s ease;
-}
-
-.join-btn:hover {
-  background: var(--primary-light);
+.stats {
+  display: flex;
+  gap: 12px;
 }
 
 /* ========================= */
@@ -159,54 +132,28 @@
 @media (max-width: 700px) {
 
   .server-card {
-    flex-direction: column;
-    align-items: flex-start;
+    max-width: 100%;
+    margin: 10px 20px;
   }
 
-  .join-btn {
-    width: 100%;
-  }
-
-}
+} 
 </style>
 
-<!-- SEARCH + FILTER -->
-<div class="search-wrapper">
 
-  <input type="text" placeholder="Search servers..." class="search-input">
 
-  <div class="filter-groups">
+<!-- SEARCH BAR -->
+<div class="search-bar">
 
-    <!-- POSITION -->
-    <div class="filter-group">
-      <span>Position</span>
-      <div class="filters">
-        <button>Moderator</button>
-        <button>Developer</button>
-        <button>Designer</button>
-      </div>
+  <div class="search-input-wrap">
+    <input type="text" placeholder="Search servers...">
+
+    <!-- POPUP -->
+    <div class="search-popup">
+      <div class="popup-item">Moderator</div>
+      <div class="popup-item">Developer</div>
+      <div class="popup-item">Serious RP</div>
+      <div class="popup-item">Beginner Friendly</div>
     </div>
-
-    <!-- SERVER TYPE -->
-    <div class="filter-group">
-      <span>Server Type</span>
-      <div class="filters">
-        <button>Serious RP</button>
-        <button>Casual RP</button>
-        <button>Public</button>
-      </div>
-    </div>
-
-    <!-- EXPERIENCE -->
-    <div class="filter-group">
-      <span>Experience</span>
-      <div class="filters">
-        <button>No Experience</button>
-        <button>Some Experience</button>
-        <button>Experienced</button>
-      </div>
-    </div>
-
   </div>
 
 </div>
@@ -215,32 +162,27 @@
 <!-- SERVER CARD -->
 <div class="server-card">
 
-  <img class="server-icon" src="https://via.placeholder.com/70">
-
-  <div class="server-info">
-    <h3>Surgedd RP</h3>
-    <p>High-quality ERLC roleplay server focused on realism and active staff.</p>
-
-    <!-- TAGS -->
-    <div class="tag-section">
-
-      <!-- PRIMARY TAGS -->
-      <div class="tags primary">
-        <span>Moderator</span>
-        <span>Serious RP</span>
-        <span>Experienced</span>
-      </div>
-
-      <!-- EXTRA TAGS -->
-      <div class="tags extra">
-        <span>🔥 Actively Hiring</span>
-        <span>Very Active</span>
-        <span>Australia / NZ</span>
-      </div>
-
-    </div>
+  <!-- TOP TAGS (POSITIONS ONLY) -->
+  <div class="card-tags">
+    <span>MODERATOR</span>
+    <span>DEVELOPER</span>
+    <span>+1</span>
   </div>
 
-  <button class="join-btn">Join</button>
+  <!-- TITLE -->
+  <h3>Surgedd RP</h3>
+
+  <!-- STATUS (replaces description) -->
+  <p class="status">ACTIVE • HIRING</p>
+
+  <!-- BOTTOM BAR -->
+  <div class="card-footer">
+    <span class="owner">Surgedd Team</span>
+
+    <div class="stats">
+      <span>👁 120</span>
+      <span>❤ 12</span>
+    </div>
+  </div>
 
 </div>
