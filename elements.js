@@ -1,7 +1,7 @@
 class SiteHeader extends HTMLElement {
   connectedCallback() {
       this.innerHTML = `
-header>
+<header>
   <div class="nav-inner">
 
     <div class="logo"><a href=""><img src="../media/Surgedd.png"><span>Surgedd</span></a></div>
