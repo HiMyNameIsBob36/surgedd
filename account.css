@@ -1,6 +1,7 @@
 root {
   --primary: #3c9600;
   --primary-light: #4bbd00;
+  --priamry-dark: rgba(60, 150, 0, 0.5);
 
   --bg: #000;
   --card: #02040a;
@@ -27,8 +28,8 @@ section {
   border-radius: 10px;
 }
 
-.section img {
-  background: var(--primary-light);
+section img {
+  background: var(--primary-dark);
   border: 1px solid var(--primary);
   border-radius: 10px; 
 }
