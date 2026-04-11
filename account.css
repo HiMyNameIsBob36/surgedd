@@ -28,10 +28,17 @@ section {
   border-radius: 10px;
 }
 
-section img {
+/*section img {
   background: var(--primary-dark);
   border: 1px solid var(--primary);
   border-radius: 10px; 
+}*/
+
+section img {
+  background: rgba(60,150,0,0.5);
+  border: 1px solid #3c9600;
+  border-radius: 10px;
+  padding: 2px;
 }
 
 @media (max-width: 700px) {
