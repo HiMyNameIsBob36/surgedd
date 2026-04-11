@@ -129,7 +129,7 @@ header {
 /* FOOTER */
 /* ========================= */
 
-.footer {
+footer {
   margin-top: 140px;
   padding: 70px 24px; /* bigger spacing */
   background: var(--card);
