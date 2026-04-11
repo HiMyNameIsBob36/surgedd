@@ -1,0 +1,16 @@
+<script>
+async function getData() {
+  const res = await fetch('https://lajcdyfxtrmmwoljshke.supabase.co', {
+    headers: {
+      apikey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhamNkeWZ4dHJtbXdvbGpzaGtlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1Njg5ODEsImV4cCI6MjA4OTE0NDk4MX0.7kv0g5OCiG0OrZg1979Q8rW5Dz_GArfEPlxHmQv_9bk',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhamNkeWZ4dHJtbXdvbGpzaGtlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1Njg5ODEsImV4cCI6MjA4OTE0NDk4MX0.7kv0g5OCiG0OrZg1979Q8rW5Dz_GArfEPlxHmQv_9bk'
+    }
+  });
+
+  const data = await res.json();
+
+  console.log(data); // ← THIS IS JSON
+}
+
+getData();
+</script>
