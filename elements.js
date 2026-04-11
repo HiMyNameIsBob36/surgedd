@@ -1,18 +1,20 @@
 class SiteHeader extends HTMLElement {
   connectedCallback() {
       this.innerHTML = `
-<div class="navbar">
-<div class="logo">ERLC<span>X</span></div>
+header>
+  <div class="nav-inner">
 
-<form method="get">
-<div class="search"><input placeholder="Search creations, users, groups..."></div>
-</form>
+    <div class="logo"><a href=""><img src="../media/Surgedd.png"><span>Surgedd</span></a></div>
 
-<div class="nav-right">
-<button class="create-btn">+ Create New</button>
-<div class="profile">HeyItBob36</div>
-</div>
-</div>`
+    <nav class="nav-links">
+      <a href="#"><img src="../media/support.svg"><span>Support</span></a>
+      <a href="#"><img src="../media/marketplace.svg"><span>Marketplace</span></a>
+      <a href="#"><img src="../media/account.svg"><span>Account</span></a>
+    </nav>
+
+  </div>
+</header>
+`
   }
 }
 
