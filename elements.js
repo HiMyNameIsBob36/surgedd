@@ -22,33 +22,37 @@ header>
 class SiteFooter extends HTMLElement {
   connectedCallback() {
       this.innerHTML = `
-<footer><div class="footer-grid">
+<footer class="footer">
+  <div class="footer-inner">
 
-<div class="footer-brand">
-<h2>Surgedd</h2><p>Surge your servers staff team in no time.</p>
-<span>© 2026 Surgedd. All rights reserved.<br>This site is not endorsed nor affilated with Roblox Inc.</span>
-</div>
+    <div class="footer-col brand">
+      <h2>Surgedd</h2>
+      <p>Connecting servers with the right people..</p>
+      <small>© 2026 @_sammy36. All rights reserved.</small>
+      <small class="muted">This site is not endorsed by nor affiliated with Roblox Corporation.</small>
+    </div>
 
-<div class="footer-column">
-<h4>Resources</h4>
-<a href="#">Support</a><a href="#">Premium</a><a href="#">Site Status</a>
-</div>
+    <div class="footer-group">
 
-<div class="footer-column">
-<h4>Get in Touch</h4>
-<a href="#">Email</a><a href="#">Discord</a>
-</div>
+      <div class="footer-col">
+        <h4>GET IN TOUCH</h4>
+        <a href="mailto:"><img src="../media/mail.svg">Email</a>
+        <a href="#"><img src="../media/chat.svg">Discord</a>      
+        <a href="#"><img src="../media/github.svg">GitHub</a>
+      </div>
 
-<div class="footer-column">
-<h4>Legal</h4>
-<a href="#">Terms of Service</a><a href="#">Privacy Policy</a>
-</div></div>
+      <div class="footer-col">
+        <h4>RESOURCES</h4>
+       <a href="guidelines">Guidelines</a>
+        <a href="privacy">Privacy Policy</a>
+        <a href="status">Status Page</a>
+      </div>
 
-<div class="footer-bottom">
-© 2026 ERLCX. All rights reserved.
-</div>
+    </div>
 
-</footer>`
+  </div>
+</footer>
+`
   }
 }
 
