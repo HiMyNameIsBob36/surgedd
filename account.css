@@ -1,7 +1,7 @@
 root {
   --primary: #3c9600;
   --primary-light: #4bbd00;
-  --priamry-dark: rgba(60,150,0,0.5);
+  --priamry-dark: rgba(60,150,0,0.3);
 
   --bg: #000;
   --card: #02040a;
@@ -35,7 +35,7 @@ section {
 }*/
 
 section img {
-  background: rgba(60,150,0,0.5);
+  background: rgba(60,150,0,0.3);
   border: 1px solid #3c9600;
   border-radius: 7px;
   padding: 2px;
