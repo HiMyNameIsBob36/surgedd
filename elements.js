@@ -22,7 +22,7 @@ header>
 class SiteFooter extends HTMLElement {
   connectedCallback() {
       this.innerHTML = `
-<footer class="footer">
+<footer>
   <div class="footer-inner">
 
     <div class="footer-col brand">
